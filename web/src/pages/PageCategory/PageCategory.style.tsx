@@ -12,9 +12,18 @@ export const Top = styled.div`
   padding: 0 50px;
 `;
 
+export const Actions = styled.div`
+  grid-area: 1 / 3 / 2 / 4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const H1 = styled.h1`
   color: white;
   text-align: center;
+  text-transform: uppercase;
 `;
 
 export const Content = styled.div`

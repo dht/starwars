@@ -5,12 +5,13 @@ export const Wrapper = styled.h1`
   color: white;
   padding: 0;
   margin: 0;
+  transition: text-shadow 0.2s;
+
+  &:hover {
+    text-shadow: 0 0 10px white;
+  }
 
   &.clickable {
     cursor: pointer;
-
-    &:hover {
-      text-shadow: 0 0 10px white;
-    }
   }
 `;

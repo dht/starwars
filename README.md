@@ -14,9 +14,21 @@ npm install
 npm run dev
 ```
 
-## Setup husky
+## Solution approach
 
-Husky is a tool that allows you to run scripts before git commands are executed. This is useful to run tests or validate commits before pushing code to the repository.
+I've implement a mono-repo with several base packages:
+
+| Package        | Description                       |
+| -------------- | --------------------------------- |
+| `starwars-api` | API client for the Starwars API   |
+| `starwars-ui`  | Shared components for the project |
+| `table-system` | A schema-based table system       |
+| `form-system`  | A schema-based form system        |
+
+> Note: I’ve implemented a getAll method that fetches all data from the API.
+> This approach enables the use of MUI’s advanced DataGrid features, such as sorting and filtering. However, this method is not ideal for real-world applications as it has long response latency. In practice, a REST API would handle sorting, filtering, and other CRUD operations server-side .
+
+## Setup husky
 
 ```bash
 npx husky install

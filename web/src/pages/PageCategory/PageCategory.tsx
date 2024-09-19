@@ -1,30 +1,42 @@
-import React from 'react';
-import { Content, H1, Top, Wrapper } from './PageCategory.style';
+import { Breadcrumbs, Button, Logo } from 'starwars-ui';
 import { Table } from 'table-system';
-import { Breadcrumbs, Logo } from 'starwars-ui';
-import { api } from 'starwars-api';
-import { useMount } from 'react-use';
+import { tables } from '../../_definitions';
+import { Json } from '../../types';
+import { Actions, Content, H1, Top, Wrapper } from './PageCategory.style';
 
 export type PageCategoryProps = {
-  onLogoClick?: () => void;
+  data: Json[];
+  isLoading?: boolean;
+  categoryId?: string;
+  callbacks: {
+    onNewItem: () => void;
+    onItemChange: (id: string, change: Json) => void;
+    onItemDelete: (id: string) => void;
+    onLogoClick?: () => void;
+  };
 };
 
 export function PageCategory(props: PageCategoryProps) {
-  useMount(() => {
-    api.people.getAll().then((data: any) => {
-      console.log('data ->', data);
-    });
-  });
+  const { data, isLoading, callbacks, categoryId } = props;
 
   return (
     <Wrapper className='PageCategory-wrapper' data-testid='PageCategory-wrapper'>
       <Top>
-        <Logo onClick={props.onLogoClick} />
-        <Breadcrumbs />
+        <Logo onClick={callbacks.onLogoClick} />
+        <Breadcrumbs categoryId={categoryId} />
       </Top>
-      <H1>Characters</H1>
+      <Actions>
+        <Button onClick={callbacks.onNewItem}>New Person</Button>
+      </Actions>
+      <H1>{categoryId}</H1>
       <Content>
-        <Table />
+        <Table
+          config={tables.people}
+          data={data}
+          loading={isLoading}
+          onItemChange={callbacks.onItemChange}
+          onItemDelete={callbacks.onItemDelete}
+        />
       </Content>
     </Wrapper>
   );
