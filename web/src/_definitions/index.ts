@@ -1,3 +1,2 @@
-import { tables } from './tables';
-
-export { tables };
+export { tables } from './tables';
+export { forms } from './forms';

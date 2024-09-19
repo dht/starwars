@@ -1,10 +1,11 @@
 // import { selectors, useDispatch, useSelector } from 'starwars-store';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { PageCategory } from './PageCategory';
 import { toast } from 'starwars-ui';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Json } from '../../types';
 import { useData } from '../../hooks/useData';
+import { addListener, guid4 } from 'shared-base';
 
 export type PageCategoryContainerProps = {};
 
@@ -18,7 +19,9 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
 
   const callbacks = useMemo(
     () => ({
-      onNewItem: () => {},
+      onNewItem: () => {
+        navigate('new');
+      },
       onItemChange: (id: string, change: Json) => {
         updateItem(id, change);
         toast('Item updated', { type: 'success' });
@@ -33,6 +36,21 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
     }),
     [data]
   );
+
+  // NOTE: in a "real-world" app, side-effects would be handled in a centralized way
+  useEffect(() => {
+    const unlisten = addListener('create/person', (data: Json) => {
+      const id = guid4();
+      const item = { ...data, id };
+      createItem(id, item);
+      toast('Item created', { type: 'success' });
+      navigate(-1);
+    });
+
+    return () => {
+      unlisten();
+    };
+  }, []);
 
   return (
     <PageCategory data={data} isLoading={isLoading} callbacks={callbacks} categoryId={categoryId} />

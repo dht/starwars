@@ -1,0 +1,63 @@
+{
+  "name": "form-system",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc & vite build",
+    "test": "jest",
+    "coverage": "jest --coverage=true"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@hookform/resolvers": "^3.9.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
+    "@mui/styled-engine-sc": "^6.1.1",
+    "@mui/x-data-grid": "^7.17.0",
+    "react-hook-form": "^7.53.0",
+    "styled-components": "^6.1.13",
+    "yup": "^1.4.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.3.0",
+    "@types/bytes": "^3.1.4",
+    "@types/chance": "^1.1.3",
+    "@types/jest": "^28.1.8",
+    "@types/react-window": "^1.8.5",
+    "@types/styled-components": "^5.1.25",
+    "@vitejs/plugin-react": "^3.1.0",
+    "chance": "^1.1.8",
+    "jest": "^28.1.3",
+    "jest-cli": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "sass": "^1.54.0",
+    "testing-base": "^0.4.2",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^2.0.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/form-system.umd.js",
+  "module": "./dist/form-system.es.js",
+  "types": "./dist/dts/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/form-system.es.js",
+      "require": "./dist/form-system.umd.js"
+    }
+  }
+}
