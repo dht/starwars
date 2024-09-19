@@ -1,11 +1,18 @@
 import React from 'react';
 import { Wrapper } from './Logo.style';
+import classnames from 'classnames';
 
-export type LogoProps = {};
+export type LogoProps = {
+  onClick?: () => void;
+};
 
-export function Logo(_props: LogoProps) {
+export function Logo(props: LogoProps) {
+  const className = classnames('Logo-wrapper', {
+    clickable: props.onClick,
+  });
+
   return (
-    <Wrapper className='Logo-wrapper' data-testid='Logo-wrapper'>
+    <Wrapper className={className} data-testid='Logo-wrapper' onClick={props.onClick}>
       Star Wars
     </Wrapper>
   );

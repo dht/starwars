@@ -1,11 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { BkVideo, Wrapper } from './App.style';
 import PageSearch from '../pages/PageSearch/PageSearch';
-import PageCategory from '../pages/PageCategory/PageCategory';
+import PageCategory from '../pages/PageCategory/PageCategory.container';
 
 export const App = () => {
   return (
     <Wrapper>
+      <Routes>
+        <Route path='/category/:categoryId' element={<PageCategory />} />
+        <Route path='/search' element={<PageSearch />} />
+        <Route path='/' element={<PageSearch />} />
+      </Routes>
       <BkVideo
         crossOrigin='anonymous'
         playsInline
@@ -15,11 +20,6 @@ export const App = () => {
         autoPlay
         loop
       ></BkVideo>
-      <Routes>
-        <Route path='/category/:categoryId' element={<PageCategory />} />
-        <Route path='/search' element={<PageSearch />} />
-        <Route path='/' element={<PageSearch />} />
-      </Routes>
     </Wrapper>
   );
 };
