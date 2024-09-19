@@ -1,8 +1,6 @@
 import React from 'react';
 import { Last, Wrapper } from './Breadcrumbs.style';
-import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
 
 // TODO: Implement Breadcrumbs component with proper items
 

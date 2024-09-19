@@ -1,4 +1,4 @@
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Delete as DeleteIcon } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { DataGrid, GridRowModel } from '@mui/x-data-grid';
 import { useCallback, useMemo } from 'react';

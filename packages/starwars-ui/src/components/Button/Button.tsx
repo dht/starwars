@@ -1,5 +1,5 @@
 import { Wrapper } from './Button.style';
-import MuiButton from '@mui/material/Button';
+import { Button as MuiButton } from '@mui/material';
 
 export type ButtonProps = {
   children?: React.ReactNode;

@@ -13,7 +13,7 @@ const cwd = path.resolve(process.cwd(), '../');
 const chunks = splitVendorChunkPlugin({
   strategy: 'default',
   customSplitting: {
-    'react-vendor': ['react', 'react-dom', 'redux', 'react-redux'],
+    'react-vendor': ['react', 'react-dom'],
   },
 });
 
