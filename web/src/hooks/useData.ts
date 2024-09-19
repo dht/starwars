@@ -17,7 +17,6 @@ export function useData(collectionName: string) {
 
   const createItem = useCallback(
     (id: string, item: Json) => {
-      console.log('data ->', data);
       push(item);
     },
     [data]
@@ -25,8 +24,6 @@ export function useData(collectionName: string) {
 
   const updateItem = useCallback(
     (id: string, change: Json) => {
-      console.log('data ->', data);
-      console.log('id, change ->', id, change);
       update((item) => item.id === id, change);
     },
     [data]
@@ -34,9 +31,7 @@ export function useData(collectionName: string) {
 
   const deleteItem = useCallback(
     (id: string) => {
-      console.log('id ->', id, data);
       const index = data.findIndex((item) => item.id === id);
-      console.log('index ->', index);
 
       removeAt(index);
     },

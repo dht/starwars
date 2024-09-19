@@ -23,6 +23,6 @@ root.render(
   <Router>
     <App />
     <Footer />
-    <ToastContainer />
+    <ToastContainer position='bottom-right' />
   </Router>
 );
