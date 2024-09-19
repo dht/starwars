@@ -5,7 +5,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
-import MuiDialog from '@mui/material/Dialog';
+import { Dialog as MuiDialog } from '@mui/material';
 import React from 'react';
 import { Wrapper } from './Dialog.style';
 

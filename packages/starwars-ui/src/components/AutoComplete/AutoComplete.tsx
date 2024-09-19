@@ -1,6 +1,10 @@
-import { Button, CircularProgress, ListSubheader } from '@mui/material';
-import MuiAutocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
+import {
+  Button,
+  CircularProgress,
+  ListSubheader,
+  Autocomplete as MuiAutocomplete,
+  TextField,
+} from '@mui/material';
 import { debounce } from 'lodash';
 import React, { useState } from 'react';
 import { List, ListItem, Wrapper } from './AutoComplete.style';
