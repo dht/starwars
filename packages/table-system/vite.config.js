@@ -16,22 +16,22 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.tsx'),
-      name: 'StarwarsUi',
+      name: 'TableSystem',
       formats: ['es', 'umd'],
-      fileName: (format) => `starwars-ui.${format}.js`,
+      fileName: (format) => `table-system.${format}.js`,
     },
     rollupOptions: {
       plugins: [ANALYZE_BUNDLE ? analyze() : null],
       ...externals({
         react: '',
         'react-dom': '',
-        'react-select/creatable': '',
-        'react-toastify': '',
         ...p.dependencies,
       }),
     },
   },
   resolve: {
-    alias: {},
+    alias: {
+      'starwars-ui': `${cwd}/starwars-ui/src`,
+    },
   },
 });

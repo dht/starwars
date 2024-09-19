@@ -1,5 +1,5 @@
 {
-  "name": "starwars-ui",
+  "name": "table-system",
   "version": "1.0.0",
   "license": "GPL-3.0",
   "publishConfig": {
@@ -16,7 +16,7 @@
     "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
     "@mui/styled-engine-sc": "^6.1.1",
-    "classnames": "^2.5.1",
+    "@mui/x-data-grid": "^7.17.0",
     "styled-components": "^6.1.13"
   },
   "peerDependencies": {
@@ -48,13 +48,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/starwars-ui.umd.js",
-  "module": "./dist/starwars-ui.es.js",
+  "main": "./dist/table-system.umd.js",
+  "module": "./dist/table-system.es.js",
   "types": "./dist/dts/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/starwars-ui.es.js",
-      "require": "./dist/starwars-ui.umd.js"
+      "import": "./dist/table-system.es.js",
+      "require": "./dist/table-system.umd.js"
     },
     "./dist/index.css": {
       "import": "./dist/index.css",
