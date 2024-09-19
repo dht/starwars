@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -6,4 +7,8 @@ export const Wrapper = styled.div`
   li {
     color: #aaa;
   }
+`;
+
+export const Last = styled(Typography)`
+  text-transform: capitalize;
 `;

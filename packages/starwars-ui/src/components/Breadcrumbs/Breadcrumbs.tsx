@@ -1,19 +1,25 @@
 import React from 'react';
-import { Wrapper } from './Breadcrumbs.style';
+import { Last, Wrapper } from './Breadcrumbs.style';
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-export type BreadcrumbsProps = {};
+// TODO: Implement Breadcrumbs component with proper items
 
-export function Breadcrumbs(_props: BreadcrumbsProps) {
+export type BreadcrumbsProps = {
+  categoryId: string;
+};
+
+export function Breadcrumbs(props: BreadcrumbsProps) {
+  const { categoryId } = props;
+
   return (
     <Wrapper className='Breadcrumbs-wrapper' data-testid='Breadcrumbs-wrapper'>
       <MuiBreadcrumbs aria-label='breadcrumb'>
         <Link underline='hover' color='white' href='/'>
           Home
         </Link>
-        <Typography sx={{ color: 'white' }}>Characters</Typography>
+        <Last sx={{ color: 'white' }}>{categoryId}</Last>
       </MuiBreadcrumbs>
     </Wrapper>
   );
