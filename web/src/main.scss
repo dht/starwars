@@ -9,4 +9,12 @@ body {
   margin: 0;
   direction: rtl;
   background-color: #222;
+  min-height: 100vh;
+}
+
+html,
+body,
+#root {
+  display: flex;
+  flex: 1;
 }
