@@ -27,7 +27,9 @@ export function PageCategory(props: PageCategoryProps) {
         <Breadcrumbs categoryId={categoryId} />
       </Top>
       <Actions>
-        <Button onClick={callbacks.onNewItem}>New Person</Button>
+        <Button disabled={isLoading} onClick={callbacks.onNewItem}>
+          New Person
+        </Button>
       </Actions>
       <H1>{categoryId}</H1>
       <Content>
