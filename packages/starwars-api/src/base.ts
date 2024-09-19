@@ -6,6 +6,12 @@ export const generateEndpointForCollection = (collection: string) => {
     return response?.data;
   };
 
+  const search = async (q: string) => {
+    const encoded = encodeURIComponent(q);
+    const response = await instance.get(`https://swapi.dev/api/${collection}/?search=${encoded}`);
+    return response?.data;
+  };
+
   const get = async (id: number = 1) => {
     const response = await instance.get(`https://swapi.dev/api/${collection}/${id}/`);
     return response?.data;
@@ -14,5 +20,6 @@ export const generateEndpointForCollection = (collection: string) => {
   return {
     getAll,
     get,
+    search,
   };
 };
