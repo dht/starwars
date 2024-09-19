@@ -1,5 +1,5 @@
 {
-  "name": "starwars-ui",
+  "name": "starwars-api",
   "version": "1.0.0",
   "license": "GPL-3.0",
   "publishConfig": {
@@ -17,7 +17,6 @@
     "@mui/material": "^6.1.1",
     "@mui/styled-engine-sc": "^6.1.1",
     "classnames": "^2.5.1",
-    "react-toastify": "^10.0.5",
     "styled-components": "^6.1.13"
   },
   "peerDependencies": {
@@ -49,21 +48,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/starwars-ui.umd.js",
-  "module": "./dist/starwars-ui.es.js",
+  "main": "./dist/starwars-api.umd.js",
+  "module": "./dist/starwars-api.es.js",
   "types": "./dist/dts/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/starwars-ui.es.js",
-      "require": "./dist/starwars-ui.umd.js"
-    },
-    "./dist/index.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
-    },
-    "./dist/normalize.css": {
-      "import": "./dist/normalize.css",
-      "require": "./dist/normalize.css"
+      "import": "./dist/starwars-api.es.js",
+      "require": "./dist/starwars-api.umd.js"
     }
   }
 }
