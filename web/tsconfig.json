@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["dom", "dom.iterable", "esnext", "DOM", "ES2020"],
+    "target": "ES2020",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "../",
+    "paths": {
+      "starwars-store": ["packages/starwars-store"],
+      "starwars-api": ["packages/starwars-api"],
+      "starwars-ui": ["packages/starwars-ui"],
+      "table-system": ["packages/table-system"],
+      "form-system": ["packages/form-system"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["src/test"]
+}

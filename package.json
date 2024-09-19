@@ -1,0 +1,21 @@
+{
+  "name": "starwars-root",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run -w web dev"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sh ./scripts/pre-commit-prevent-large-files.sh"
+    }
+  },
+  "dependencies": {}
+}
