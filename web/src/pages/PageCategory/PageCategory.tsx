@@ -3,6 +3,7 @@ import { Table } from 'table-system';
 import { tables } from '../../_definitions';
 import { Json } from '../../types';
 import { Actions, Content, H1, Top, Wrapper } from './PageCategory.style';
+import { Outlet } from 'react-router-dom';
 
 export type PageCategoryProps = {
   data: Json[];
@@ -38,6 +39,7 @@ export function PageCategory(props: PageCategoryProps) {
           onItemDelete={callbacks.onItemDelete}
         />
       </Content>
+      <Outlet />
     </Wrapper>
   );
 }

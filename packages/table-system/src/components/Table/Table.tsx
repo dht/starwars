@@ -46,6 +46,7 @@ export function Table(props: TableProps) {
         rows={data}
         columns={columns}
         loading={loading}
+        rowHeight={40}
         initialState={{
           pagination: {
             paginationModel: {
@@ -53,7 +54,7 @@ export function Table(props: TableProps) {
             },
           },
         }}
-        sx={{ backgroundColor: 'white', maxHeight: '600px', minHeight: '300px' }}
+        sx={{ backgroundColor: 'white', maxHeight: '550px', minHeight: '300px' }}
         disableRowSelectionOnClick
         processRowUpdate={processRowUpdate}
       />
