@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { BkVideo, Wrapper } from './App.style';
-import PageSearch from '../pages/PageSearch/PageSearch';
+import PageSearch from '../pages/PageSearch/PageSearch.container';
 import PageCategory from '../pages/PageCategory/PageCategory.container';
 
 export const App = () => {

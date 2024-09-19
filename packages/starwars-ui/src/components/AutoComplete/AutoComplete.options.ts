@@ -1,4 +1,9 @@
-const top100Films = [
+export interface Film {
+  title: string;
+  year: number;
+}
+
+const top100Films: Film[] = [
   { title: 'The Shawshank Redemption', year: 1994 },
   { title: 'The Godfather', year: 1972 },
   { title: 'The Godfather: Part II', year: 1974 },
@@ -125,7 +130,7 @@ const top100Films = [
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
-export const options = top100Films.map((option) => {
+export const initialOptions = top100Films.map((option) => {
   const firstLetter = option.title[0].toUpperCase();
   return {
     firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,

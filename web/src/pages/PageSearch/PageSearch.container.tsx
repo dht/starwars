@@ -1,21 +1,22 @@
-import { selectors, useDispatch, useSelector } from 'starwars-store';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PageSearch } from './PageSearch';
 
 export type PageSearchContainerProps = {};
 
 export function PageSearchContainer(_props: PageSearchContainerProps) {
-  const dispatch = useDispatch();
-  const appState = useSelector(selectors.raw.$rawAppState);
+  const navigate = useNavigate();
 
   const callbacks = useMemo(
     () => ({
-      onClick: () => {},
+      onGroupClick: (group: string) => {
+        navigate(`/category/${group}`);
+      },
     }),
     []
   );
 
-  return <PageSearch />;
+  return <PageSearch callbacks={callbacks} />;
 }
 
 export default PageSearchContainer;
