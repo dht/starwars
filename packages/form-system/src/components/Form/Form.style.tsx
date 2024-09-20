@@ -20,6 +20,8 @@ export const Content = styled.div`
 export const SideImage = styled.div`
   flex: 1;
   background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const Actions = styled.div`
@@ -28,4 +30,5 @@ export const Actions = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
+  padding: 20px 0 10px;
 `;
