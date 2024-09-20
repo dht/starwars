@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="Starwars Search Engine - Discover the Universe" />
+    <meta name="description" content="Search through the Star Wars universe for people, planets, films, species, vehicles, and starships. Explore all the details of your favorite galaxy far, far away." />
+    <meta name="keywords" content="Starwars, search engine, people, planets, films, species, vehicles, starships, galaxy, space, sci-fi" />
+    <meta name="author" content="Starwars Fans" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://starwars-search-engine.web.app/" />
+    <meta property="og:title" content="Starwars Search Engine - Discover the Universe" />
+    <meta property="og:description" content="Search and explore the vast Star Wars universe: people, planets, films, species, vehicles, and starships." />
+    <meta property="og:image" content="https://starwars-search-engine.web.app/images/og-image.png" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://starwars-search-engine.web.app/" />
+    <meta name="twitter:title" content="Starwars Search Engine - Discover the Universe" />
+    <meta name="twitter:description" content="Find your favorite Star Wars characters, planets, ships, and more with our advanced search engine." />
+    <meta name="twitter:image" content="https://starwars-search-engine.web.app/images/twitter-card-image.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://starwars-search-engine.web.app/",
+      "name": "Starwars Search Engine",
+      "description": "A search engine for exploring the Star Wars universe: characters, planets, vehicles, species, and films.",
+      "author": {
+        "@type": "Organization",
+        "name": "Starwars Fans"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://starwars-search-engine.web.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Fonts and Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,13 +59,51 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/fav/apple-touch-icon-57x57.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="114x114"
+      href="/fav/apple-touch-icon-114x114.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/fav/apple-touch-icon-72x72.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="/fav/apple-touch-icon-144x144.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/fav/apple-touch-icon-60x60.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="120x120"
+      href="/fav/apple-touch-icon-120x120.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/fav/apple-touch-icon-76x76.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/fav/apple-touch-icon-152x152.png"
+    />
+    <link rel="icon" type="image/png" href="/fav/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/fav/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/fav/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/fav/favicon-128.png" sizes="128x128" />
+
+    <!-- Microsoft Tiles -->
+    <meta name="application-name" content="Starwars Search" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/fav/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/fav/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/fav/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/fav/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/fav/mstile-310x310.png" />
+
+    <!-- Lottie Animations -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
 
-    <title>Starwars</title>
-    <meta name="title" content="Starwars search engine" />
-    <meta name="description" content="Starwars search engine" />
-
-    <style></style>
+    <title>Starwars Search Engine - Discover the Universe</title>
   </head>
   <body>
     <div id="root"></div>
