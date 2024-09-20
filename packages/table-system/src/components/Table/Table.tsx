@@ -55,6 +55,7 @@ export function Table(props: TableProps) {
         sx={{ backgroundColor: 'white', maxHeight: '550px', minHeight: '300px' }}
         disableRowSelectionOnClick
         processRowUpdate={processRowUpdate}
+        pageSizeOptions={[10]}
       />
     </Wrapper>
   );

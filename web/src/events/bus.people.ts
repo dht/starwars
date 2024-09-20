@@ -49,15 +49,15 @@ async function createPerson(action: Action) {
 }
 
 async function updatePerson(action: Action) {
-  const { params, crudMethod } = action;
-  const { id, item, change } = params || {};
+  const { id, params, crudMethod } = action;
+  const { item, change } = params || {};
 
-  crudMethod(id, change);
+  crudMethod(id!, change);
   toast(`${item?.name} updated`, { type: 'success' });
 }
 
 async function deletePerson(action: Action) {
-  const { params, crudMethod } = action;
+  const { id, params, crudMethod } = action;
   const { item } = params || {};
 
   const { value, didCancel } = await prompt.confirm({
@@ -69,7 +69,7 @@ async function deletePerson(action: Action) {
 
   if (didCancel || !value) return;
 
-  crudMethod(item.id, item);
+  crudMethod(id!, item);
   toast(`${item?.name} deleted`, { type: 'success' });
 }
 
