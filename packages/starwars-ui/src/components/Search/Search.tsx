@@ -30,6 +30,7 @@ export function Search(props: SearchProps) {
         placeholder='Search...'
         size='small'
         fullWidth
+        autoComplete='off'
         slotProps={{
           input: {
             startAdornment: (

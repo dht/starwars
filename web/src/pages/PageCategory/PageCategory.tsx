@@ -1,9 +1,9 @@
-import { Breadcrumbs, Button, Search, Logo } from 'starwars-ui';
+import { Outlet } from 'react-router-dom';
+import { Breadcrumbs, Button, Logo, Lottie, Search } from 'starwars-ui';
 import { Table } from 'table-system';
 import { tables } from '../../_definitions';
 import { Json } from '../../types';
-import { Actions, Content, H1, Top, Wrapper } from './PageCategory.style';
-import { Outlet } from 'react-router-dom';
+import { Actions, Content, H1, Loader, Top, Wrapper } from './PageCategory.style';
 
 export type PageCategoryProps = {
   data: Json[];
@@ -21,6 +21,19 @@ export type PageCategoryProps = {
 
 export function PageCategory(props: PageCategoryProps) {
   const { data, q, isLoading, callbacks, categoryId } = props;
+
+  function renderLoader() {
+    return (
+      <Loader>
+        <Lottie
+          autoplay
+          loop
+          size={200}
+          url='https://lottie.host/ce93fda1-37d8-4ffc-b3b0-18b6d213a585/ZTxCzvjIHh.json'
+        />
+      </Loader>
+    );
+  }
 
   return (
     <Wrapper className='PageCategory-wrapper' data-testid='PageCategory-wrapper'>
@@ -42,6 +55,7 @@ export function PageCategory(props: PageCategoryProps) {
           loading={isLoading}
           onItemChange={callbacks.onItemChange}
           onItemDelete={callbacks.onItemDelete}
+          customLoader={renderLoader}
         />
       </Content>
       <Outlet />
