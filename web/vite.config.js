@@ -44,6 +44,7 @@ export default defineConfig(() => {
         'starwars-ui': `${cwd}/packages/starwars-ui/src`,
         'table-system': `${cwd}/packages/table-system/src`,
         'form-system': `${cwd}/packages/form-system/src`,
+        'prompt-system': `${cwd}/packages/prompt-system/src`,
       },
     },
     define: {},

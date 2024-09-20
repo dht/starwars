@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useList, useMount } from 'react-use';
 import { api } from 'starwars-api';
 import { Json } from '../types';
@@ -16,7 +16,7 @@ const keys: Record<CollectionName, string[]> = {
 };
 
 export function useData(collectionName: CollectionName) {
-  const [data, { set, updateAt, removeAt, push }] = useList<Json>([]);
+  const [data, { set, update, filter, push }] = useList<Json>([]);
   const [filteredData, setFilteredData] = useState<Json[]>([]);
   const [q, setQ] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -62,20 +62,16 @@ export function useData(collectionName: CollectionName) {
 
   const updateItem = useCallback(
     (id: string, change: Json) => {
-      const index = data.findIndex((item) => item.id === id);
-      if (index === -1) return;
-      updateAt(index, change);
+      update((item) => item.id === id, change);
     },
-    [updateAt]
+    [update]
   );
 
   const deleteItem = useCallback(
     (id: string) => {
-      const index = data.findIndex((item) => item.id === id);
-      if (index === -1) return;
-      removeAt(index);
+      filter((item) => item.id !== id);
     },
-    [removeAt]
+    [filter]
   );
 
   return {

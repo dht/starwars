@@ -22,7 +22,8 @@
       "starwars-api": ["packages/starwars-api"],
       "starwars-ui": ["packages/starwars-ui"],
       "table-system": ["packages/table-system"],
-      "form-system": ["packages/form-system"]
+      "form-system": ["packages/form-system"],
+      "prompt-system": ["packages/prompt-system"]
     }
   },
   "include": ["src"],
