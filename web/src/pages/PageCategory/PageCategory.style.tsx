@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const Top = styled.div`
   grid-area: 1 / 1 / 2 / 2;
-  padding: 0 50px;
+  padding: 10px 50px;
 `;
 
 export const Actions = styled.div`

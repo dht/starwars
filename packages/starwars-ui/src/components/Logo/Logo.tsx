@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper } from './Logo.style';
+import { Sub, Wrapper } from './Logo.style';
 import classnames from 'classnames';
 
 export type LogoProps = {
@@ -14,6 +14,7 @@ export function Logo(props: LogoProps) {
   return (
     <Wrapper className={className} data-testid='Logo-wrapper' onClick={props.onClick}>
       Star Wars
+      <Sub>Explorer</Sub>
     </Wrapper>
   );
 }
