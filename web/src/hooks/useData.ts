@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useList, useMount } from 'react-use';
+import { useList, useLocalStorage, useMount } from 'react-use';
 import { api } from 'starwars-api';
 import { Json } from '../types';
 
@@ -16,7 +16,8 @@ const keys: Record<CollectionName, string[]> = {
 };
 
 export function useData(collectionName: CollectionName) {
-  const [data, { set, update, filter, push }] = useList<Json>([]);
+  const [storedData, setStoredData] = useLocalStorage<Json[]>(collectionName, []);
+  const [data, { set, update, filter, push }] = useList<Json>(storedData);
   const [filteredData, setFilteredData] = useState<Json[]>([]);
   const [q, setQ] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -32,10 +33,17 @@ export function useData(collectionName: CollectionName) {
     setQ('');
     const method = api[collectionName];
 
+    if (storedData && storedData.length) {
+      set(storedData);
+      setIsLoading(false);
+      return;
+    }
+
     method
       .getAll()
       .then((data: any) => {
         set(data);
+        setStoredData(data);
         setIsLoading(false);
       })
       .catch(() => {
@@ -52,6 +60,10 @@ export function useData(collectionName: CollectionName) {
     const results = fuseInstance.search(q);
     setFilteredData(results.map((result) => result.item));
   }, [data, q]);
+
+  useEffect(() => {
+    setStoredData(data);
+  }, [data]);
 
   const createItem = useCallback(
     (_id: string, item: Json) => {
