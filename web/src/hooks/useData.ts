@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import Fuse from 'fuse.js';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useList, useMount } from 'react-use';
 import { api } from 'starwars-api';
 import { Json } from '../types';
-import Fuse from 'fuse.js';
 
 type CollectionName = 'people' | 'films' | 'starships' | 'vehicles' | 'species' | 'planets';
 
 const keys: Record<CollectionName, string[]> = {
-  people: ['name', 'height', 'mass', 'birth_year'],
+  people: ['name'],
   films: ['title'],
   starships: ['name'],
   vehicles: ['name'],
@@ -16,25 +16,31 @@ const keys: Record<CollectionName, string[]> = {
 };
 
 export function useData(collectionName: CollectionName) {
-  const [data, { set, update, removeAt, push }] = useList<Json>([]);
+  const [data, { set, updateAt, removeAt, push }] = useList<Json>([]);
   const [filteredData, setFilteredData] = useState<Json[]>([]);
   const [q, setQ] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const fuseInstance = useRef<Fuse<Json>>(
-    new Fuse([], {
+
+  const fuseInstance = useMemo<Fuse<Json>>(() => {
+    return new Fuse(data, {
       keys: keys[collectionName],
-    })
-  );
+    });
+  }, [data]);
 
   useMount(() => {
     setIsLoading(true);
     setQ('');
     const method = api[collectionName];
 
-    method.getAll().then((data: any) => {
-      set(data);
-      setIsLoading(false);
-    });
+    method
+      .getAll()
+      .then((data: any) => {
+        set(data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
   });
 
   useEffect(() => {
@@ -43,37 +49,33 @@ export function useData(collectionName: CollectionName) {
       return;
     }
 
-    const results = fuseInstance.current.search(q);
+    const results = fuseInstance.search(q);
     setFilteredData(results.map((result) => result.item));
-  }, [q, data]);
-
-  useEffect(() => {
-    fuseInstance.current = new Fuse<Json>(data, {
-      keys: keys[collectionName],
-    });
-  }, [data]);
+  }, [data, q]);
 
   const createItem = useCallback(
     (_id: string, item: Json) => {
       push(item);
     },
-    [data]
+    [push]
   );
 
   const updateItem = useCallback(
     (id: string, change: Json) => {
-      update((item) => item.id === id, change);
+      const index = data.findIndex((item) => item.id === id);
+      if (index === -1) return;
+      updateAt(index, change);
     },
-    [data]
+    [updateAt]
   );
 
   const deleteItem = useCallback(
     (id: string) => {
       const index = data.findIndex((item) => item.id === id);
-
+      if (index === -1) return;
       removeAt(index);
     },
-    [data]
+    [removeAt]
   );
 
   return {
