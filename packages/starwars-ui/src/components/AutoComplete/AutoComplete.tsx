@@ -20,12 +20,15 @@ export function AutoComplete(props: AutoCompleteProps) {
   const [options, setOptions] = useState<Option[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
+
+    if (!value) {
+      handleClose();
+      return;
+    }
+
+    setOpen(true);
     setLoading(true);
     const result = await props.apiMethod(value);
     setOptions(result);
@@ -66,10 +69,10 @@ export function AutoComplete(props: AutoCompleteProps) {
     <Wrapper className='AutoComplete-wrapper' data-testid='AutoComplete-wrapper'>
       <MuiAutocomplete
         open={open}
-        onOpen={handleOpen}
         onClose={handleClose}
         isOptionEqualToValue={(option, value) => option.value === value.value}
         getOptionLabel={(option) => option.label}
+        noOptionsText='No results found'
         options={options}
         groupBy={(option) => option.category}
         loading={loading}

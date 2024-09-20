@@ -3,7 +3,7 @@ import { FormConfig } from 'form-system';
 export const config: FormConfig = {
   id: 'person',
   title: 'Create Person',
-  description: 'Add your addition to the Star Wars universe.',
+  description: 'Add your addition to the Star Wars universe:',
   submitText: 'Create',
   fields: [
     {
