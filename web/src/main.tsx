@@ -18,11 +18,7 @@ initApi({
 });
 
 const darkTheme = createTheme({
-  palette: {
-    primary: {
-      main: '#8e146b',
-    },
-  },
+  palette: {},
   components: {
     MuiPaper: {
       styleOverrides: {
