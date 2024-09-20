@@ -2,15 +2,15 @@ import { Route, Routes } from 'react-router-dom';
 import { BkVideo, Wrapper } from './App.style';
 import PageSearch from '../pages/PageSearch/PageSearch.container';
 import PageCategory from '../pages/PageCategory/PageCategory.container';
-import { NewPersonDialog } from '../dialogs/NewPersonDialog';
+import { useEventBus } from '../events/bus.hooks';
 
 export const App = () => {
+  useEventBus();
+
   return (
     <Wrapper>
       <Routes>
-        <Route path='/category/:categoryId' element={<PageCategory />}>
-          <Route path='new' element={<NewPersonDialog />} />
-        </Route>
+        <Route path='/category/:categoryId' element={<PageCategory />} />
         <Route path='/search' element={<PageSearch />} />
         <Route path='/' element={<PageSearch />} />
       </Routes>

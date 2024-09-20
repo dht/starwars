@@ -1,6 +1,5 @@
-import { Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import Dialog from '../Dialog/Dialog';
+import { Button, TextField } from 'starwars-ui';
 import { Actions, Wrapper } from './Form.style';
 import { FormConfig, FormField } from './Form.types';
 import { randomNumber, randomWord } from './Form.utils';
@@ -9,12 +8,11 @@ export type FormProps = {
   config: FormConfig;
   onSave: (data: Json) => void;
   onCancel: () => void;
-  isModal: boolean;
 };
 
 export function Form(props: FormProps) {
-  const { config, isModal } = props;
-  const { fields = [], title, description, submitText } = config;
+  const { config } = props;
+  const { fields = [], submitText } = config;
   const {
     handleSubmit,
     register,
@@ -67,25 +65,11 @@ export function Form(props: FormProps) {
     );
   }
 
-  function renderInner() {
-    return (
-      <Wrapper
-        className='Form-wrapper'
-        data-testid='Form-wrapper'
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        {renderFields()}
-        {renderSubmit()}
-      </Wrapper>
-    );
-  }
-
-  return isModal ? (
-    <Dialog title={title} description={description} onClose={props.onCancel}>
-      {renderInner()}
-    </Dialog>
-  ) : (
-    renderInner()
+  return (
+    <Wrapper className='Form-wrapper' data-testid='Form-wrapper' onSubmit={handleSubmit(onSubmit)}>
+      {renderFields()}
+      {renderSubmit()}
+    </Wrapper>
   );
 }
 

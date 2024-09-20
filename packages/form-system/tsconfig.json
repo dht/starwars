@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "types": ["types-base", "@types/jest"],
     "baseUrl": "../",
-    "paths": {}
+    "paths": {
+      "starwars-ui": ["packages/starwars-ui"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "declarations.d.ts"],
   "exclude": ["src/**.*.spec.tsx"]

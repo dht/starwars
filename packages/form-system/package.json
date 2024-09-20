@@ -11,9 +11,6 @@
     "coverage": "jest --coverage=true"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.1",
     "react-hook-form": "^7.53.0",
     "shared-base": "^1.0.0",
     "styled-components": "^6.1.13"

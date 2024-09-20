@@ -27,6 +27,11 @@ export default defineConfig({
         'react-dom': '',
         'react/jsx-runtime': '',
         'react/jsx-dev-runtime': '',
+        '@mui/material': '',
+        '@mui/icons-material': '',
+        '@mui/x-data-grid': '',
+        'react-toastify': '',
+        lodash: '',
         ...p.dependencies,
       }),
     },
@@ -34,6 +39,7 @@ export default defineConfig({
   resolve: {
     alias: {
       'starwars-ui': `${cwd}/starwars-ui/src`,
+      'form-system': `${cwd}/form-system/src`,
     },
   },
 });
