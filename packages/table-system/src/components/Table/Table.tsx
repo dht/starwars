@@ -1,7 +1,5 @@
-import { Delete as DeleteIcon } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import { DataGrid, GridRowModel } from '@mui/x-data-grid';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
+import { DataGrid, DeleteIcon, GridRowModel, IconButton } from 'starwars-ui';
 import { Wrapper } from './Table.style';
 import { TableConfig } from './Table.types';
 

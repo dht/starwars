@@ -1,19 +1,13 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from '@mui/material';
 import { Wrapper } from './Prompt.style';
 import { PromptParams } from './Prompt.types';
+import { Form } from 'form-system';
+import { Dialog, DialogContentText } from 'starwars-ui';
 
 export type PromptProps = {
   show: boolean;
   params: PromptParams | null;
   callbacks: {
-    onSubmit: (value: boolean | string) => void;
+    onSubmit: (value: boolean | Json) => void;
     onCancel: () => void;
   };
 };
@@ -33,28 +27,36 @@ export function Prompt(props: PromptProps) {
     confirmColor = 'primary',
   } = params;
 
+  function onSubmit(value: boolean | Json) {
+    callbacks.onSubmit(value);
+  }
+
   function onConfirm() {
-    callbacks.onSubmit(true);
+    onSubmit(true);
+  }
+
+  function renderInner() {
+    switch (params?.type) {
+      case 'confirm':
+        return <DialogContentText id='alert-dialog-description'>{message}</DialogContentText>;
+      case 'form':
+        return <Form config={params.formConfig} onSave={onSubmit} onCancel={callbacks.onCancel} />;
+      default:
+    }
   }
 
   return (
     <Wrapper className='Prompt-wrapper' data-testid='Prompt-wrapper'>
       <Dialog
-        open
-        onClose={callbacks.onCancel}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        title={title}
+        onCancel={callbacks.onCancel}
+        onSubmit={onConfirm}
+        confirmText={confirmText}
+        cancelText={cancelText}
+        confirmColor={confirmColor}
+        hideActions={params.type === 'form'}
       >
-        <DialogTitle id='alert-dialog-title'>{title}</DialogTitle>
-        <DialogContent sx={{ minWidth: '350px' }}>
-          <DialogContentText id='alert-dialog-description'>{message}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={callbacks.onCancel}>{cancelText}</Button>
-          <Button color={confirmColor} onClick={onConfirm} autoFocus>
-            {confirmText}
-          </Button>
-        </DialogActions>
+        {renderInner()}
       </Dialog>
     </Wrapper>
   );

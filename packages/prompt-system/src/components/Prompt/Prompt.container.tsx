@@ -10,7 +10,7 @@ export function PromptContainer(_props: PromptContainerProps) {
 
   const callbacks = useMemo(
     () => ({
-      onSubmit: (value: boolean | string) => {
+      onSubmit: (value: boolean | Json) => {
         onSubmit(value);
       },
       onCancel: () => {
