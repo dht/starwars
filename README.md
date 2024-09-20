@@ -2,6 +2,8 @@
 
 This repository contains the Starwars project, organized as a monorepo with several base packages.
 
+Demo: [https://starwars-search-engine.web.app/](https://starwars-search-engine.web.app/)
+
 ## Installation
 
 To install the project dependencies, run the following command:
