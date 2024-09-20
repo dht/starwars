@@ -24,7 +24,7 @@ root.render(
   <Router>
     <App />
     <Footer />
-    <ToastContainer position='bottom-right' />
+    <ToastContainer position='bottom-right' style={{ bottom: '40px' }} />
     <PromptContainer />
   </Router>
 );

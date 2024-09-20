@@ -34,4 +34,9 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: auto;
+  padding-top: 20px;
+`;
+
+export const Loader = styled.div`
+  padding: 10vh auto;
 `;

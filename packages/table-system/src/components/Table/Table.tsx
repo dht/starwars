@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { DataGrid, DeleteIcon, GridRowModel, IconButton } from 'starwars-ui';
-import { Wrapper } from './Table.style';
+import { CircularProgress, DataGrid, DeleteIcon, GridRowModel, IconButton } from 'starwars-ui';
+import { Loader, Wrapper } from './Table.style';
 import { TableConfig } from './Table.types';
 
 export type TableProps = {
@@ -9,13 +9,19 @@ export type TableProps = {
   loading?: boolean;
   onItemChange: (id: string, change: Json) => void;
   onItemDelete: (id: string) => void;
+  customLoader?: () => React.ReactNode;
 };
 
 export function Table(props: TableProps) {
   const { config, data, loading } = props;
 
   const processRowUpdate = (newRow: GridRowModel, _oldRow: GridRowModel) => {
-    props.onItemChange(newRow.id, newRow);
+    const didChange = Object.keys(newRow).some((key) => newRow[key] !== _oldRow[key]);
+
+    if (didChange) {
+      props.onItemChange(newRow.id, newRow);
+    }
+
     return newRow;
   };
 
@@ -38,6 +44,10 @@ export function Table(props: TableProps) {
     [config.columns, data]
   );
 
+  const CustomLoader = () => (
+    <Loader>{props.customLoader ? props.customLoader() : <CircularProgress />}</Loader>
+  );
+
   return (
     <Wrapper className='Table-wrapper' data-testid='Table-wrapper'>
       <DataGrid
@@ -52,10 +62,13 @@ export function Table(props: TableProps) {
             },
           },
         }}
-        sx={{ backgroundColor: 'white', maxHeight: '550px', minHeight: '300px' }}
+        sx={{ backgroundColor: 'white', maxHeight: '515px', minHeight: '300px' }}
         disableRowSelectionOnClick
         processRowUpdate={processRowUpdate}
         pageSizeOptions={[10]}
+        slots={{
+          loadingOverlay: CustomLoader,
+        }}
       />
     </Wrapper>
   );
