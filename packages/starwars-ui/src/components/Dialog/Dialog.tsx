@@ -2,11 +2,13 @@ import {
   Button,
   DialogActions,
   DialogContent,
-  DialogTitle,
+  IconButton,
   Dialog as MuiDialog,
 } from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
+import classnames from 'classnames';
 import React from 'react';
-import { Wrapper } from './Dialog.style';
+import { Actions, DialogTitle, Wrapper } from './Dialog.style';
 
 export type DialogProps = {
   title: string;
@@ -18,6 +20,8 @@ export type DialogProps = {
   cancelText?: string;
   confirmColor?: 'primary' | 'secondary' | 'success' | 'error';
   hideActions?: boolean;
+  noPadding?: boolean;
+  titleShadow?: boolean;
 };
 
 export function Dialog(props: DialogProps) {
@@ -28,6 +32,8 @@ export function Dialog(props: DialogProps) {
     cancelText = 'Cancel',
     confirmColor = 'primary',
     hideActions,
+    noPadding,
+    titleShadow,
   } = props;
 
   function renderActions() {
@@ -45,6 +51,15 @@ export function Dialog(props: DialogProps) {
     );
   }
 
+  const sx = {
+    padding: noPadding ? 0 : 'auto',
+    minWidth: '350px',
+  };
+
+  const className = classnames({
+    titleShadow,
+  });
+
   return (
     <Wrapper className='Dialog-wrapper' data-testid='Dialog-wrapper'>
       <MuiDialog
@@ -53,8 +68,17 @@ export function Dialog(props: DialogProps) {
         aria-labelledby={title}
         aria-describedby={description}
       >
-        <DialogTitle id='alert-dialog-title'>{title}</DialogTitle>
-        <DialogContent sx={{ minWidth: '350px' }}>{props.children}</DialogContent>
+        {title && (
+          <DialogTitle id='alert-dialog-title' className={className}>
+            {title}
+            <Actions>
+              <IconButton aria-label='close' onClick={props.onCancel}>
+                <CloseIcon />
+              </IconButton>
+            </Actions>
+          </DialogTitle>
+        )}
+        <DialogContent sx={sx}>{props.children}</DialogContent>
         {renderActions()}
       </MuiDialog>
     </Wrapper>

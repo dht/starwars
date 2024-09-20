@@ -39,7 +39,7 @@ export function PageCategory(props: PageCategoryProps) {
     <Wrapper className='PageCategory-wrapper' data-testid='PageCategory-wrapper'>
       <Top>
         <Logo onClick={callbacks.onLogoClick} />
-        <Breadcrumbs categoryId={categoryId} />
+        <Breadcrumbs categoryId={categoryId ?? ''} />
       </Top>
       <Actions>
         <Button disabled={isLoading} onClick={callbacks.onNewItem}>

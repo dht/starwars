@@ -5,6 +5,7 @@ export const config: FormConfig = {
   title: 'Create Person',
   description: 'Add your addition to the Star Wars universe:',
   submitText: 'Create',
+  minWidth: 600,
   fields: [
     {
       name: 'name',

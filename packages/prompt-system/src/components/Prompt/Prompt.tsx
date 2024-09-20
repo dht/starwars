@@ -55,6 +55,8 @@ export function Prompt(props: PromptProps) {
         cancelText={cancelText}
         confirmColor={confirmColor}
         hideActions={params.type === 'form'}
+        noPadding={params.type === 'form'}
+        titleShadow={params.type === 'form'}
       >
         {renderInner()}
       </Dialog>
