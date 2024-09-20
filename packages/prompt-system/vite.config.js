@@ -16,9 +16,9 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.tsx'),
-      name: 'FormSystem',
+      name: 'PromptSystem',
       formats: ['es', 'umd'],
-      fileName: (format) => `form-system.${format}.js`,
+      fileName: (format) => `prompt-system.${format}.js`,
     },
     rollupOptions: {
       plugins: [ANALYZE_BUNDLE ? analyze() : null],

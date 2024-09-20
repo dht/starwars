@@ -1,11 +1,12 @@
 // import { selectors, useDispatch, useSelector } from 'starwars-store';
-import React, { useEffect, useMemo } from 'react';
-import { PageCategory } from './PageCategory';
-import { toast } from 'starwars-ui';
+import { usePrompt } from 'prompt-system';
+import { useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Json } from '../../types';
-import { useData } from '../../hooks/useData';
 import { addListener, guid4 } from 'shared-base';
+import { toast } from 'starwars-ui';
+import { useData } from '../../hooks/useData';
+import { Json } from '../../types';
+import { PageCategory } from './PageCategory';
 
 export type PageCategoryContainerProps = {};
 
@@ -13,9 +14,7 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
   const navigate = useNavigate();
   const { categoryId } = useParams();
   const { data, isLoading, q, setQ, createItem, updateItem, deleteItem } = useData('people');
-
-  // const dispatch = useDispatch();
-  // const appState = useSelector(selectors.raw.$rawAppState);
+  const { confirm } = usePrompt();
 
   const callbacks = useMemo(
     () => ({
@@ -26,7 +25,20 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
         updateItem(id, change);
         toast('Item updated', { type: 'success' });
       },
-      onItemDelete: (id: string) => {
+      onItemDelete: async (id: string) => {
+        const item = data.find((item) => item.id === id);
+
+        if (!item) return;
+
+        const { value, didCancel } = await confirm({
+          title: 'Delete Item',
+          message: `Are you sure you want to delete ${item.name}?`,
+          confirmText: 'Delete',
+          confirmColor: 'error',
+        });
+
+        if (didCancel || !value) return;
+
         deleteItem(id);
         toast('Item deleted', { type: 'success' });
       },

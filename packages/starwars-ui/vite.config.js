@@ -24,6 +24,8 @@ export default defineConfig({
       plugins: [ANALYZE_BUNDLE ? analyze() : null],
       ...externals({
         react: '',
+        'react/jsx-runtime': '',
+        'react/jsx-dev-runtime': '',
         'react-dom': '',
         'react-select/creatable': '',
         'react-toastify': '',

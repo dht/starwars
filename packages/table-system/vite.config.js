@@ -25,6 +25,8 @@ export default defineConfig({
       ...externals({
         react: '',
         'react-dom': '',
+        'react/jsx-runtime': '',
+        'react/jsx-dev-runtime': '',
         ...p.dependencies,
       }),
     },
