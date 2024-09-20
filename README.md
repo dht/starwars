@@ -1,6 +1,21 @@
-# Starwars
+<!--
+      ________________.  ___     .______
+     /                | /   \    |   _  \
+    |   (-----|  |----`/  ^  \   |  |_)  |
+     \   \    |  |    /  /_\  \  |      /
+.-----)   |   |  |   /  _____  \ |  |\  \-------.
+|________/    |__|  /__/     \__\| _| `.________|
+ ____    __    ____  ___     .______    ________.
+ \   \  /  \  /   / /   \    |   _  \  /        |
+  \   \/    \/   / /  ^  \   |  |_)  ||   (-----`
+   \            / /  /_\  \  |      /  \   \
+    \    /\    / /  _____  \ |  |\  \---)   |
+     \__/  \__/ /__/     \__\|__| `._______/
 
-This repository contains the Starwars project, organized as a monorepo with several base packages.
+------------------------------------------------
+ -->
+
+This repository contains the Starwars Search Engine, organized as a monorepo with several base packages.
 
 Demo: [https://starwars-search-engine.web.app/](https://starwars-search-engine.web.app/)
 
