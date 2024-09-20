@@ -12,7 +12,7 @@ export type PageCategoryContainerProps = {};
 export function PageCategoryContainer(_props: PageCategoryContainerProps) {
   const navigate = useNavigate();
   const { categoryId } = useParams();
-  const { data, isLoading, createItem, updateItem, deleteItem } = useData('people');
+  const { data, isLoading, q, setQ, createItem, updateItem, deleteItem } = useData('people');
 
   // const dispatch = useDispatch();
   // const appState = useSelector(selectors.raw.$rawAppState);
@@ -29,6 +29,9 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
       onItemDelete: (id: string) => {
         deleteItem(id);
         toast('Item deleted', { type: 'success' });
+      },
+      onSearch: (value: string) => {
+        setQ(value);
       },
       onLogoClick: () => {
         navigate('/');
@@ -53,7 +56,13 @@ export function PageCategoryContainer(_props: PageCategoryContainerProps) {
   }, []);
 
   return (
-    <PageCategory data={data} isLoading={isLoading} callbacks={callbacks} categoryId={categoryId} />
+    <PageCategory
+      data={data}
+      q={q}
+      isLoading={isLoading}
+      callbacks={callbacks}
+      categoryId={categoryId}
+    />
   );
 }
 

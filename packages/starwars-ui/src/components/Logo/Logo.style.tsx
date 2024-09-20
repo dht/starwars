@@ -6,6 +6,7 @@ export const Wrapper = styled.h1`
   padding: 0;
   margin: 0;
   transition: text-shadow 0.2s;
+  white-space: nowrap;
 
   &:hover {
     text-shadow: 0 0 10px white;

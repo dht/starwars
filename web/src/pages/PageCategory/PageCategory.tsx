@@ -1,4 +1,4 @@
-import { Breadcrumbs, Button, Logo } from 'starwars-ui';
+import { Breadcrumbs, Button, Search, Logo } from 'starwars-ui';
 import { Table } from 'table-system';
 import { tables } from '../../_definitions';
 import { Json } from '../../types';
@@ -9,16 +9,18 @@ export type PageCategoryProps = {
   data: Json[];
   isLoading?: boolean;
   categoryId?: string;
+  q: string;
   callbacks: {
     onNewItem: () => void;
     onItemChange: (id: string, change: Json) => void;
     onItemDelete: (id: string) => void;
-    onLogoClick?: () => void;
+    onSearch: (q: string) => void;
+    onLogoClick: () => void;
   };
 };
 
 export function PageCategory(props: PageCategoryProps) {
-  const { data, isLoading, callbacks, categoryId } = props;
+  const { data, q, isLoading, callbacks, categoryId } = props;
 
   return (
     <Wrapper className='PageCategory-wrapper' data-testid='PageCategory-wrapper'>
@@ -33,6 +35,7 @@ export function PageCategory(props: PageCategoryProps) {
       </Actions>
       <H1>{categoryId}</H1>
       <Content>
+        <Search value={q} onChange={callbacks.onSearch} />
         <Table
           config={tables.people}
           data={data}

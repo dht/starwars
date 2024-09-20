@@ -24,12 +24,14 @@ export const H1 = styled.h1`
   color: white;
   text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 export const Content = styled.div`
   grid-area: 2 / 1 / 3 / 4;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
-  padding-bottom: 10vh;
+  overflow: auto;
 `;
