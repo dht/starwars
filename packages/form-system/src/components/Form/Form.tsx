@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Button, TextField } from 'starwars-ui';
-import { Actions, Wrapper } from './Form.style';
+import { Actions, Content, SideImage, Wrapper } from './Form.style';
 import { FormConfig, FormField } from './Form.types';
 import { randomNumber, randomWord } from './Form.utils';
 
@@ -12,7 +12,7 @@ export type FormProps = {
 
 export function Form(props: FormProps) {
   const { config } = props;
-  const { fields = [], submitText } = config;
+  const { fields = [], submitText, sideImageUrl, minWidth } = config;
   const {
     handleSubmit,
     register,
@@ -60,16 +60,30 @@ export function Form(props: FormProps) {
   function renderSubmit() {
     return (
       <Actions>
-        <Button onClick={onRandom}>Random</Button>
+        <Button link onClick={onRandom}>
+          Random
+        </Button>
         <Button type='submit'>{submitText}</Button>
       </Actions>
     );
   }
 
+  const style = {
+    minWidth: minWidth ? `${minWidth}px` : 'auto',
+  };
+
   return (
-    <Wrapper className='Form-wrapper' data-testid='Form-wrapper' onSubmit={handleSubmit(onSubmit)}>
-      {renderFields()}
-      {renderSubmit()}
+    <Wrapper
+      className='Form-wrapper'
+      data-testid='Form-wrapper'
+      style={style}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <SideImage style={{ backgroundImage: `url(${sideImageUrl})` }}></SideImage>
+      <Content>
+        {renderFields()}
+        {renderSubmit()}
+      </Content>
     </Wrapper>
   );
 }

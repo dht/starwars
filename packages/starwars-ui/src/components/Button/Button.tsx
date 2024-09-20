@@ -6,16 +6,17 @@ export type ButtonProps = {
   onClick?: () => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  link?: boolean;
 };
 
 export function Button(props: ButtonProps) {
-  const { type = 'button', disabled } = props;
+  const { type = 'button', link, disabled } = props;
 
   return (
     <Wrapper className='Button-wrapper' data-testid='Button-wrapper'>
       <MuiButton
         type={type}
-        variant='contained'
+        variant={link ? 'text' : 'contained'}
         color='inherit'
         onClick={props.onClick}
         disabled={disabled}

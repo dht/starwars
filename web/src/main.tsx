@@ -7,6 +7,7 @@ import { App } from './bootstrap/App';
 import Footer from './components/Footer/Footer';
 import './main.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
 initApi({
   onError: (message: string) => {
@@ -16,15 +17,33 @@ initApi({
   },
 });
 
+const darkTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#8e146b',
+    },
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {},
+      },
+    },
+  },
+});
+
 const container = document.getElementById('root') ?? document.body;
 
 const root = createRoot(container);
 
 root.render(
-  <Router>
-    <App />
-    <Footer />
-    <ToastContainer position='bottom-right' style={{ bottom: '40px' }} />
-    <PromptContainer />
-  </Router>
+  <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
+    <Router>
+      <App />
+      <Footer />
+      <ToastContainer position='bottom-right' style={{ bottom: '40px' }} />
+      <PromptContainer />
+    </Router>
+  </ThemeProvider>
 );

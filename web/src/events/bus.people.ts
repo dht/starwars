@@ -3,6 +3,7 @@ import { toast } from 'starwars-ui';
 import { prompt } from 'prompt-system';
 import { Json } from '../types';
 import { forms } from '../_definitions';
+import { randomImage } from '../data/data.images';
 
 /*
 This file is a simplified version of a "bus" system that listens 
@@ -32,7 +33,11 @@ const map: Record<Verb, Method> = {
 async function createPerson(action: Action) {
   const { crudMethod } = action;
   const { value, didCancel } = await prompt.form({
-    formConfig: forms.person,
+    title: 'New Person',
+    formConfig: {
+      ...forms.person,
+      sideImageUrl: randomImage(),
+    },
   });
 
   if (didCancel || !value) return;

@@ -4,6 +4,8 @@ export type FormConfig = {
   description: string;
   fields: FormField[];
   submitText: string;
+  sideImageUrl?: string;
+  minWidth?: number;
 };
 
 export type FormField = {
