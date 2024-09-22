@@ -7,7 +7,7 @@ export const Wrapper = styled.form`
 `;
 
 export const Content = styled.div`
-  flex: 1;
+  flex: 4;
   display: flex;
   gap: 10px;
   margin: 10px;
@@ -18,7 +18,7 @@ export const Content = styled.div`
 `;
 
 export const SideImage = styled.div`
-  flex: 1;
+  flex: 5;
   background-color: black;
   background-size: cover;
   background-repeat: no-repeat;
