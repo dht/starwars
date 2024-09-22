@@ -14,6 +14,6 @@ export const DialogTitle = styled(MuiDialogTitle)`
   justify-content: space-between;
 
   &.titleShadow {
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.15);
   }
 `;

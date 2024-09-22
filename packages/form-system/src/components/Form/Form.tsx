@@ -48,6 +48,7 @@ export function Form(props: FormProps) {
         variant='filled'
         error={!!errors[name]}
         size='small'
+        fullWidth
         helperText={errors[name]?.message as string}
       />
     );
